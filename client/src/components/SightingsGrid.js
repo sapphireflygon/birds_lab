@@ -11,6 +11,6 @@ const SightingsGrid = ({sightings, removeSighting}) => {
         </>
     );
 
-}
+};
 
 export default SightingsGrid;

@@ -46,13 +46,31 @@ const createRouter = function (collection) {
       .deleteOne({ _id: ObjectID(id) })
       .then(result => {
         res.json(result)
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500);
-      res.json({ status: 500, error: err });
-    });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500);
+        res.json({ status: 500, error: err });
+      });
   });
+
+  // find birds by species and ID
+  router.get('/:species/:id', (req, res) => {
+    const species = req.params.species;
+    const id = req.params.id;
+    collection.find({
+        species: species,
+        _id: ObjectID(id)
+      })
+      .then(result => {
+        res.json(result)
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500);
+        res.json({ status: 500, error: err });
+      });
+    });
 
   return router;
 };

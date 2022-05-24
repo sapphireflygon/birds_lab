@@ -20,3 +20,9 @@ export const deleteSighting = (id) => {
     })
 }
 
+// find bird by species and ID -- no other front end written yet for this
+export const getSpecificSpeciesSightings = (species, id) => {
+    return fetch(baseURL + species + id)
+        .then(res => res.json());
+};
+
